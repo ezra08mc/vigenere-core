@@ -1,11 +1,3 @@
-// ===== Vigenère Cipher core =====
-
-/**
- * Encrypt or decrypt text using the Vigenère cipher.
- * Only A-Z / a-z letters are shifted; case is preserved;
- * all other characters (spaces, punctuation, numbers, newlines) pass through unchanged.
- * The key stream only advances on letter characters, and only uses letters from the key.
- */
 function vigenere(text, key, mode) {
   const cleanKey = key.replace(/[^a-zA-Z]/g, '').toUpperCase();
   if (!cleanKey) {
@@ -45,7 +37,6 @@ function vigenere(text, key, mode) {
   return result;
 }
 
-// ===== UI wiring =====
 
 const state = {
   mode: 'encrypt',
