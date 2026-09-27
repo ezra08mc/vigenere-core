@@ -310,17 +310,6 @@ button {
   color: var(--paper-dim);
 }
 
-footer {
-  margin-top: 56px;
-  text-align: center;
-}
-
-footer p {
-  font-size: 11px;
-  color: var(--paper-dim);
-  opacity: 0.6;
-}
-
 @media (max-width: 560px) {
   .how-grid { grid-template-columns: 1fr; }
   .site-header { flex-direction: column; }
