@@ -110,8 +110,8 @@ removeFileBtn.addEventListener('click', (e) => {
 });
 
 function loadFile(file) {
-  if (file.size > 5 * 1024 * 1024) {
-    setStatus('File terlalu besar (maks 5 MB).', true);
+  if (file.size > 10 * 1024 * 1024) {
+    setStatus('File terlalu besar (maks 10 MB).', true);
     return;
   }
   const reader = new FileReader();
