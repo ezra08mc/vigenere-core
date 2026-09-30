@@ -48,6 +48,7 @@ const tabs = document.querySelectorAll('.tab');
 const fileInput = document.getElementById('fileInput');
 const dropzone = document.getElementById('dropzone');
 const fileNameLabel = document.getElementById('fileNameLabel');
+const removeFileBtn = document.getElementById('removeFileBtn');
 const keyInput = document.getElementById('keyInput');
 const inputText = document.getElementById('inputText');
 const runBtn = document.getElementById('runBtn');
@@ -93,6 +94,21 @@ dropzone.addEventListener('drop', (e) => {
   if (file) loadFile(file);
 });
 
+function removeUploadedFile() {
+  state.fileContent = null;
+  state.fileName = null;
+  fileInput.value = '';
+  fileNameLabel.textContent = 'Pilih file atau seret ke sini';
+  removeFileBtn.hidden = true;
+}
+
+removeFileBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  removeUploadedFile();
+  setStatus('File yang diupload telah dihapus.');
+});
+
 function loadFile(file) {
   if (file.size > 5 * 1024 * 1024) {
     setStatus('File terlalu besar (maks 5 MB).', true);
@@ -103,6 +119,7 @@ function loadFile(file) {
     state.fileContent = e.target.result;
     state.fileName = file.name;
     fileNameLabel.textContent = file.name;
+    removeFileBtn.hidden = false;
     setStatus('');
   };
   reader.onerror = () => setStatus('Gagal membaca file.', true);
@@ -131,10 +148,7 @@ runBtn.addEventListener('click', () => {
 });
 
 clearBtn.addEventListener('click', () => {
-  state.fileContent = null;
-  state.fileName = null;
-  fileInput.value = '';
-  fileNameLabel.textContent = 'Pilih file atau seret ke sini';
+  removeUploadedFile();
   keyInput.value = '';
   inputText.value = '';
   outputText.value = '';
