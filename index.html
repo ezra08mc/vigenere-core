@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vigenère Cipher</title>
+<title>Vigenère Cipher — Enkripsi File Teks</title>
 <link rel="stylesheet" href="style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,8 +14,10 @@
   <div class="grid-noise" aria-hidden="true"></div>
 
   <header class="site-header">
+    <div class="mark">VC</div>
     <div class="title-block">
       <h1>Vigenère Cipher</h1>
+      <p>Enkripsi dan dekripsi file teks dengan kunci kata (polyalphabetic substitution)</p>
     </div>
   </header>
 
@@ -34,8 +36,9 @@
             <input type="file" id="fileInput" accept=".txt,text/plain">
             <div class="dropzone-text">
               <span id="fileNameLabel">Pilih file atau seret ke sini</span>
-              <span class="hint">.txt · maks 10 MB</span>
+              <span class="hint">.txt · maks 5 MB</span>
             </div>
+            <button type="button" id="removeFileBtn" class="remove-file-btn" hidden aria-label="Hapus file yang diupload">✕ Hapus file</button>
           </div>
         </div>
 
@@ -71,7 +74,28 @@
       </div>
     </section>
 
+    <section class="how">
+      <h2>Cara kerja</h2>
+      <div class="how-grid">
+        <div class="how-item">
+          <span class="how-key">P</span>
+          <p>Setiap huruf plaintext digeser sejauh nilai huruf kunci yang sepadan (A=0 … Z=25), berulang sepanjang teks.</p>
+        </div>
+        <div class="how-item">
+          <span class="how-key">K</span>
+          <p>Kunci diulang untuk menyamai panjang teks. Spasi, angka, dan tanda baca dilewati tanpa digeser.</p>
+        </div>
+        <div class="how-item">
+          <span class="how-key">C</span>
+          <p>Dekripsi membalik proses yang sama: setiap huruf ciphertext digeser mundur sejauh nilai huruf kunci.</p>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <p>Dibuat untuk keperluan akademik · Vigenère Cipher</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
